@@ -1,9 +1,11 @@
 package com.practice.daniel.menuexamples;
 
+import android.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -31,6 +33,16 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //This basically brings a popup
+            DialogFragment myFragment = new MyDialogFragment();
+            //
+            myFragment.show(getFragmentManager(), "theDialog");
+
+            return true;
+        } else if(id == R.id.exit_the_app) {
+            String appName = this.getString(R.string.app_name);
+            Toast.makeText(MainActivity.this, "You closed " + appName,Toast.LENGTH_SHORT).show();
+            finish();
             return true;
         }
 
